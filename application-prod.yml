@@ -1,0 +1,22 @@
+logging.level.fm.ask.kplavins: INFO
+
+spring:
+    main:
+        show-banner: true
+    datasource:
+        url: jdbc:mysql://127.0.0.1/homework?useUnicode=yes&characterEncoding=utf8
+        driverClassName: com.mysql.jdbc.Driver
+        username: homework
+        password: h0mework 
+    jpa:
+        show-sql: false
+        hibernate:
+            ddl-auto: create-drop
+            # ddl-auto: none            
+        properties:
+            hibernate:   
+                dialect: org.hibernate.dialect.MySQL5Dialect
+            hbm2ddl:
+                auto: none
+            temp:
+                use_jdbc_metadata_defaults: false

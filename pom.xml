@@ -18,30 +18,30 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<start-class>fm.ask.kplavins.HomeworkApplication</start-class>
-		<java.version>1.8</java.version>
-	</properties>
-
 	<dependencies>
-		<dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+        <dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-rest</artifactId>
-		</dependency>
+			<artifactId>spring-boot-starter-ws</artifactId>
+		</dependency>	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<scope>test</scope>            
 		</dependency>
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <scope>test</scope>
+        </dependency>
 	</dependencies>
 
 	<build>
@@ -52,5 +52,36 @@
 			</plugin>
 		</plugins>
 	</build>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <start-class>fm.ask.kplavins.HomeworkApplication</start-class>
+        <java.version>1.8</java.version>
+    </properties>    
+
+	<profiles>
+	    <profile>
+	    	<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+	    	<dependencies>
+		        <dependency>
+		            <groupId>org.hsqldb</groupId>
+		            <artifactId>hsqldb</artifactId>
+		            <scope>runtime</scope>
+		        </dependency>
+	    	</dependencies>
+	    </profile>
+ 	    <profile>
+	    	<id>prod</id>
+	    	<dependencies>
+	        	<dependency>
+	            <groupId>mysql</groupId>
+	            <artifactId>mysql-connector-java</artifactId>
+	        	</dependency>
+        	</dependencies>
+	    </profile>
+	</profiles>
 
 </project>

@@ -1,0 +1,4 @@
+spring:        
+    main:
+        show-banner: false    
+logging.level.fm.ask.kplavins: DEBUG
